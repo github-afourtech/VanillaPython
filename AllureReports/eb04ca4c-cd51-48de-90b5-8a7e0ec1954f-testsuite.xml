@@ -1,0 +1,50 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1465214299049" stop="1465214351536">
+  <description>
+Created on May 31, 2016
+
+@author: Mudit Srivastav
+</description>
+  <name>TestScript.test_Login_Skip_Test</name>
+  <test-cases>
+    <test-case start="1465214299049" status="passed" stop="1465214320016">
+      <description>test case for json test_1</description>
+      <name>LoginPageMultipleTest.test_1_1_LoginTest_DS_1</name>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="5292-MainThread"/>
+        <label name="host" value="Mudit-S-PC"/>
+      </labels>
+      <attachments>
+        <attachment source="ff1cf46f-a947-426c-9e4f-ac2aee6863a7-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <steps>
+        <step start="1465214299053" status="passed" stop="1465214320015">
+          <title>Test Login using Json</title>
+          <name>Test Login using Json</name>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1465214320019" status="passed" stop="1465214351536">
+      <name>LoginPageMultipleTest.test_2_1___http___the_internet_herokuapp_com_login____tomsmith____SuperSecretPassword_____You_logged_into_a_secure_area___</name>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="5292-MainThread"/>
+        <label name="host" value="Mudit-S-PC"/>
+      </labels>
+      <attachments>
+        <attachment source="7ee0398e-3ae7-42a5-a385-9dca541e31ca-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <steps>
+        <step start="1465214320021" status="passed" stop="1465214351535">
+          <title>Test Login</title>
+          <name>Test Login</name>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+  </test-cases>
+  <labels/>
+</ns0:test-suite>

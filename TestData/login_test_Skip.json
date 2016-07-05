@@ -1,0 +1,8 @@
+{
+	"LoginTest_DS_1": {
+		"target_url": "http://the-internet.herokuapp.com/login",
+		"username": "tomsmith",
+		"password": "SuperSecretPassword!",
+		"expectedMessage": "You logged into a secure area!"
+	}
+}

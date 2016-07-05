@@ -1,0 +1,4 @@
+{
+  "::LoginPage2::test_google_1___https___www_google_com__": true, 
+  "::LoginPage::test_login_2___http___the_internet_herokuapp_com_login____tomsmith____SuperSecretPassword_____You_logged_into_a_secure_area__": true
+}

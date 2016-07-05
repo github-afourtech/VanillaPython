@@ -1,0 +1,13 @@
+False
+Test CSV
+Username is visible.
+Value: tomsmith entered for Username successfully.
+Password is visible.
+Value: SuperSecretPassword! entered for Password successfully.
+Login is visible.
+Login is click-able.
+Login clicked successfully.
+Message exists on page
+Logout is visible.
+Logout is click-able.
+Logout clicked successfully.

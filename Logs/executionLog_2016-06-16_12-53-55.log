@@ -1,0 +1,16 @@
+2016-06-16 12:54:08,081 [INFO] Login Successfull
+2016-06-16 12:54:08,174 [INFO] Message verification Successfull
+2016-06-16 12:54:09,230 [INFO] Logout Successfull
+2016-06-16 12:54:23,615 [INFO] Login Successfull
+2016-06-16 12:54:23,726 [ERROR] 'You logged into a secure area!' != 'You logged into a secure area'
+2016-06-16 12:54:39,894 [INFO] Login Successfull
+2016-06-16 12:54:40,003 [ERROR] 'You logged into a secure area!' != u'You logged into a secure area'
+2016-06-16 12:54:55,078 [INFO] Login Successfull
+2016-06-16 12:54:55,157 [INFO] Message verification Successfull
+2016-06-16 12:54:56,207 [INFO] Logout Successfull
+2016-06-16 12:55:15,342 [INFO] Login Successfull
+2016-06-16 12:55:15,443 [INFO] Message verification Successfull
+2016-06-16 12:55:16,446 [INFO] Logout Successfull
+2016-06-16 12:55:30,092 [INFO] Login Successfull
+2016-06-16 12:55:30,187 [INFO] Message verification Successfull
+2016-06-16 12:55:31,308 [INFO] Logout Successfull

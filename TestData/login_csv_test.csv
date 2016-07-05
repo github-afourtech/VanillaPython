@@ -1,0 +1,3 @@
+target_url,username,password,expectedMessage
+http://the-internet.herokuapp.com/login,tomsmith,SuperSecretPassword!,You logged into a secure area!
+http://the-internet.herokuapp.com/login,tomsmith,SuperSecretPassword!,You logged into a secure area

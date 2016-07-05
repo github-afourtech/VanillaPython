@@ -1,0 +1,153 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1465214267515" stop="1465214299046">
+  <description>
+Created on June 3, 2016
+
+@author: Mudit Srivastav
+</description>
+  <name>TestScript.test_LoginPage_json</name>
+  <test-cases>
+    <test-case start="1465214267515" status="failed" stop="1465214280329">
+      <description>test case for json login page</description>
+      <name>LoginPageJson.test_login_json_1_LoginTest_DS_2</name>
+      <failure>
+        <message>Exception: Error: 'You logged into a secure area!' != u'You logged into a secure area'</message>
+        <stack-trace>self = &lt;TestScript.test_LoginPage_json.LoginPageJson testMethod=test_login_json_1_LoginTest_DS_2&gt;
+
+    @wraps(func)
+    def wrapper(self):
+&gt;       return func(self, *args, **kwargs)
+
+c:\python27\lib\site-packages\ddt.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+c:\python27\lib\site-packages\allure\common.py:57: in impl
+    return func(*a, **kw)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;TestScript.test_LoginPage_json.LoginPageJson testMethod=test_login_json_1_LoginTest_DS_2&gt;
+data_set = {'expectedMessage': 'You logged into a secure area', 'password': 'SuperSecretPassword!', 'target_url': 'http://the-internet.herokuapp.com/login', 'username': 'tomsmith'}
+
+    @allure.step('Test Login using Json')
+    @file_data(os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")), 'TestData',  'login_test' + '.json'))
+    def test_login_json(self, data_set):
+        """test case for json login page"""
+        try:
+            self.OpenURL(data_set['target_url'])
+            self.objLogin = LoginPageObjects(self.objDriver)
+            self.objLogin.login(data_set['username'], data_set['password'])
+            logging.info("Login Successfull")
+            self.assertEqual(self.objLogin.loginMessage(), data_set['expectedMessage'])
+            self.objLogin.logout()
+            logging.info("Logout Successfull")
+        except Exception as e:    #For Using Allure Reports
+            allure.attach('screenshot', self.objDriver.get_screenshot_as_png(), type=AttachmentType.PNG)
+&gt;           raise Exception("Error: {}".format(e))
+E           Exception: Error: 'You logged into a secure area!' != u'You logged into a secure area'
+
+test_LoginPage_json.py:39: Exception
+-------------------------------- Captured log ---------------------------------
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session {"desiredCapabilities": {"platform": "WINDOWS", "browserName": "internet explorer", "version": "", "javascriptEnabled": true}}
+remote_connection.py       502 DEBUG    Finished Request
+Base.py                     46 INFO     Chrome instance started.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/timeouts/implicit_wait {"sessionId": "8433021733691e948cb5b49d9657ba92", "ms": 20000.0}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/url {"url": "http://the-internet.herokuapp.com/login", "sessionId": "8433021733691e948cb5b49d9657ba92"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/window/current/maximize {"windowHandle": "current", "sessionId": "8433021733691e948cb5b49d9657ba92"}
+remote_connection.py       502 DEBUG    Finished Request
+Base.py                     69 INFO     Window Maximized
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/elements {"using": "id", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "username"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element {"using": "id", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "username"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-1/displayed {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-1"}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                163 INFO     Username is visible.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-1/clear {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-1"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-1/value {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-1", "value": ["t", "o", "m", "s", "m", "i", "t", "h"]}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                124 INFO     Value: tomsmith entered for Username successfully.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/elements {"using": "id", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "password"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element {"using": "id", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "password"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-2/displayed {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-2"}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                163 INFO     Password is visible.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-2/clear {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-2"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-2/value {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-2", "value": ["S", "u", "p", "e", "r", "S", "e", "c", "r", "e", "t", "P", "a", "s", "s", "w", "o", "r", "d", "!"]}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                124 INFO     Value: SuperSecretPassword! entered for Password successfully.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element {"using": "tag name", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "button"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-3/displayed {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-3"}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                163 INFO     Login is visible.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element {"using": "tag name", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "button"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-3/displayed {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-3"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-3/enabled {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-3"}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                265 INFO     Login is click-able.
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/elements {"using": "tag name", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "button"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.16122282494795792-3/click {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.16122282494795792-3"}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                 56 INFO     Login clicked successfully.
+test_LoginPage_json.py      33 INFO     Login Successfull
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element {"using": "id", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "flash"}
+remote_connection.py       502 DEBUG    Finished Request
+Wrappers.py                238 INFO     Message exists on page
+remote_connection.py       409 DEBUG    POST http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/elements {"using": "id", "sessionId": "8433021733691e948cb5b49d9657ba92", "value": "flash"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/element/0.13004098319832025-1/text {"sessionId": "8433021733691e948cb5b49d9657ba92", "id": "0.13004098319832025-1"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    GET http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/screenshot {"sessionId": "8433021733691e948cb5b49d9657ba92"}
+remote_connection.py       502 DEBUG    Finished Request
+remote_connection.py       409 DEBUG    DELETE http://127.0.0.1:57958/session/8433021733691e948cb5b49d9657ba92/window {"sessionId": "8433021733691e948cb5b49d9657ba92"}
+remote_connection.py       502 DEBUG    Finished Request</stack-trace>
+      </failure>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="5292-MainThread"/>
+        <label name="host" value="Mudit-S-PC"/>
+      </labels>
+      <attachments>
+        <attachment source="ce98501e-b055-4f7c-b7fe-a036d31bdc53-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <steps>
+        <step start="1465214267518" status="failed" stop="1465214278990">
+          <title>Test Login using Json</title>
+          <name>Test Login using Json</name>
+          <attachments>
+            <attachment source="657c7dd6-a133-4b3e-b8e8-069b092863e8-attachment.png" title="screenshot" type="image/png"/>
+          </attachments>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1465214281053" status="passed" stop="1465214299046">
+      <description>test case for json login page</description>
+      <name>LoginPageJson.test_login_json_2_LoginTest_DS_1</name>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="5292-MainThread"/>
+        <label name="host" value="Mudit-S-PC"/>
+      </labels>
+      <attachments>
+        <attachment source="eccba4c4-a154-42b7-80a1-d0e19dab8f47-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <steps>
+        <step start="1465214281056" status="passed" stop="1465214297732">
+          <title>Test Login using Json</title>
+          <name>Test Login using Json</name>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+  </test-cases>
+  <labels/>
+</ns0:test-suite>

@@ -1,0 +1,7 @@
+ConfigParser
+selenium
+pillow
+pytest-capturelog
+pytest_allure_adaptor-1.7.4b0-py2-none-any.whl
+pytest-ordering
+ddt==1.0
