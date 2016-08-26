@@ -5,6 +5,7 @@ import subprocess
 import fnmatch
 import os
 import sys
+from Generic.AllureHTMLGenerator import allureHTMLGenerator
 
 objConfig = Config()
 objConfig.setConfigValues()
@@ -87,3 +88,4 @@ code = changeDirectory()
 if code==0:
     code1 = executeCommand()
     print code1
+    allureHTMLGenerator()

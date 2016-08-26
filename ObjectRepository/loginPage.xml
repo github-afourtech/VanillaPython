@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <loginPage>	
+	 <Element>
+		<GivenName>LoginButton</GivenName>
+		<Identifier choosenIdentifier = 'TagName'>button</Identifier>
+		<Identifier choosenIdentifier = 'Xpath'>This is invalid Xpath for testing</Identifier>
+		<Identifier choosenIdentifier = 'Id'>This is invalid Id for testing</Identifier>			
+	</Element>
+	<Element>
+		<GivenName>Button2</GivenName>
+		<Identifier choosenIdentifier = 'Xpath'>This is a xpath2</Identifier>
+		<Identifier choosenIdentifier = 'Id'>This is a Id2</Identifier>			
+	</Element>
+</loginPage>

@@ -6,15 +6,19 @@ Created on May 31, 2016
 
 from Generic.Wrappers import Wrappers
 from selenium.webdriver.common.by import By
+from lxml import etree
+from Generic.xmlReader import readXML 
+import os
+from Generic.ElementLocator import getLocatedElement, getWorkingElement
 
-
+    
 class LoginPageObjects():
     '''
     classdocs
     '''
     # This class contains all the methods to perform operations on login page.
     # All the required objects on the login page.
-
+          
     txtBox_username = (By.ID, "username")
     txtBox_password = (By.ID, "password")
     btn_Login = (By.TAG_NAME,"button")
@@ -24,8 +28,18 @@ class LoginPageObjects():
     def __init__(self, driver):
         # Create instance of Wrappers class
         self.objWrappers = Wrappers(driver)
-
+        self.driver = driver
+        self.dictElements = dict()
+        self.loadPageElementLocators("loginPage")
+    
+    def loadPageElementLocators(self, xmlFileName):
+        # loads identifiers and respective locators in dict({ UserGivenNameForElement:  [{choosenIdentifier: locatorForElement}] })
+        self.dictElements = readXML((os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")), 'ObjectRepository',  xmlFileName + '.xml')))
+        
     def enterLoginName(self, sLogin):
+        # getLocatedElement method is called to get the working elemnt
+        workingElement = getLocatedElement(self.driver, self.dictElements, "LoginButton")
+        
         self.objWrappers.enterText(self.txtBox_username, "Username", sLogin)
 
     def enterPassword(self, sPassword):

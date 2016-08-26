@@ -51,9 +51,8 @@ class LoginPage(unittest.TestCase,Base):
             self.logger.error("{}".format(e))  # This line is used to store error logs in log file generated in Logs folder.
             allure.attach('screenshot', self.objDriver.get_screenshot_as_png(), type=AttachmentType.PNG) # Use this line when you want to generate Allure Reports
             raise Exception("Error: {}".format(e))
-
-
-
+           
+            
     def tearDown(self):
         self.objDriver.quit()
 

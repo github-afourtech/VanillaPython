@@ -1,0 +1,6 @@
+*.pyc
+AllureHTMLReport
+AllureReports
+HTMLReports
+Logs
+ScreenShots

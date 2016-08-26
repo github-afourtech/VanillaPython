@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException,WebDriverException
 import sys
 import imaplib
 import getpass
@@ -29,6 +29,7 @@ class BasePage(object):
         # Create the wait object
         self.objDriver = driver
         self.objDriverWait = WebDriverWait(self.objDriver, long(Base.objConfig.lMidTimeout))
+        self.objActionChains = ActionChains(driver) 
 
 
 class Wrappers(BasePage):
@@ -121,8 +122,8 @@ class Wrappers(BasePage):
         :return:
         """
         try:
-            if iRowNo == 0:
-                objElement = self.objDriver.find_elements(*objObject)
+            if iRowNo == 0: 
+                objElement = self.objDriver.find_elements(*objObject) 
                 if self.is_visible(objObject, sObjName):
                     objElement[0].clear()
                     objElement[0].send_keys(sText)
@@ -951,3 +952,115 @@ class Wrappers(BasePage):
             encoded_string = base64.b64encode(image_file.read())
         img_element = 'b64EncodedStart{0}b64EncodedEnd'.format(encoded_string)
         return img_element
+    
+    def goBack(self):
+        '''
+        Performs browser go back function and handles WebdriverException.
+        '''
+        try:
+            self.objDriver.back()
+        except WebDriverException as backButtonException:  
+            raise Exception("ERROR: Error navigating by using browser Back button ", "Error: {}".format(backButtonException))
+            
+        
+    def maximizeWindow(self):
+        '''
+        Maximizes browser window and handles WebDriverException. 
+        '''
+        try:
+            self.objDriver.maximize_window()
+        except WebDriverException as MaximizeWindowException:  
+            raise Exception("ERROR: Error maximizing browser window", "Error: {}".format(MaximizeWindowException))
+       
+        
+    def closeWindow(self):
+        '''
+        close current browser window and handles AttributeError exception if browser is closed already
+        '''
+        try:
+            self.objDriver.manager.delete_all_cookies()    
+            self.objDriver.clear_cache()
+            self.objDriver.close()
+        except AttributeError as closeWindowException:
+            raise Exception("ERROR: Error maximizing browser window", "Error: {}".format(closeWindowException))
+       
+    
+    def clickAndHoldElement(self, objObject, sObjName, iRowNo=0):
+        """
+        Click and holds the given element if it exists and is displayed on the page
+        :param objObject: element object
+        :param sObjName: object Name
+        :param iRowNo: row number
+        :return:
+        """
+        try:
+            if iRowNo == 0:
+                if self.is_clickable(objObject, sObjName):
+                    objElement = self.objDriverWait.until(EC.presence_of_all_elements_located(objObject))
+                    self.objActionChains.click_and_hold(objElement[0]).build().perform()
+                    # print sObjName + " clicked successfully."
+                    # self.logger.info(sObjName + " clicked successfully.")
+                else:
+                    print self.get_base64_encoded_screen_shot('clickAndHoldElement')
+                    print "Element " + sObjName + " not click-able."
+                    self.logger.error("Element " + sObjName + " not click-able.")
+                    raise Exception("Element " + sObjName + " not click-able.")
+            else:
+                if self.is_clickable(objObject, sObjName):
+                    objElement = []
+                    objElement = self.objDriver.find_elements(*objObject)
+                    iRowNo = int(iRowNo)
+                    
+                    self.objActionChains.click_and_hold(objElement[iRowNo]).build().perform()
+                    # print sObjName + " clicked successfully."
+                    # self.logger.info(sObjName + " clicked successfully.")
+                else:
+                    print self.get_base64_encoded_screen_shot('clickAndHoldButton')
+                    print "Element " + sObjName + " not click-able."
+                    self.logger.error("Element " + sObjName + " not click-able.")
+                    raise Exception("Element " + sObjName + " not click-able.")
+        except Exception as e:
+            print self.get_base64_encoded_screen_shot('clickAndHoldButton')
+            print "ERROR: while finding the element " + sObjName, "Error: {}".format(e)
+            self.logger.error("ERROR: while finding the element " + sObjName, "Error: {}".format(e))
+            raise Exception("ERROR: while finding the element " + sObjName, "Error: {}".format(e))
+   
+       
+    def contextClickElement(self, objObject, sObjName, iRowNo=0):
+            """
+            context click(right click) the given element if it exists and is displayed on the page
+            :param objObject: element object
+            :param sObjName: object Name
+            :param iRowNo: row number
+            :return:
+            """
+            try:    
+                if iRowNo == 0:
+                    if self.is_clickable(objObject, sObjName):
+                        objElement = self.objDriverWait.until(EC.presence_of_all_elements_located(objObject))
+                        self.objActionChains.context_click(objElement[0])
+                        # print sObjName + " clicked successfully."
+                        # self.logger.info(sObjName + " clicked successfully.")
+                    else:
+                        print self.get_base64_encoded_screen_shot('contextClickElement')
+                        print "Element " + sObjName + " not right click-able."
+                        self.logger.error("Element " + sObjName + " not right click-able.")
+                        raise Exception("Element " + sObjName + " not  right click-able.")
+                else:
+                    if self.is_clickable(objObject, sObjName):
+                        objElement = []
+                        objElement = self.objDriver.find_elements(*objObject)
+                        iRowNo = int(iRowNo)
+                        
+                        self.objActionChains.context_click(objElement[iRowNo])  
+                        # print sObjName + " clicked successfully."
+                        # self.logger.info(sObjName + " clicked successfully.")
+                    else:
+                        print self.get_base64_encoded_screen_shot('clickAndHoldButton')
+                        print "Element " + sObjName + " not click-able."
+                        self.logger.error("Element " + sObjName + " not click-able.")
+                        raise Exception("Element " + sObjName + " not click-able.")
+            except Exception as e:
+                print self.get_base64_encoded_screen_shot('clickAndHoldButton')
+                print "ERROR: while finding the element " + sObjName, "Error: {}".format(e)
+                self.logger.error("ERROR: while finding the element " + sObjName, "Error: {}".format(e))
